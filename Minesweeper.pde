@@ -21,24 +21,21 @@ void setup ()
         {
             buttons[row][col] = new MSButton(row,col);
         }
-    }
-    
+    }    
     setBombs();
 }
 public void setBombs()
 {
-    int ranRow = (int)(Math.random()*20);
-    int ranCol = (int)(Math.random()*20);
-    if (bombs.contains(buttons[ranRow][ranCol]))
+    for (int i = 0; i < 20; i++)
     {
-
-    }
-    else 
-    {
-        // buttons[ranRow][ranCol].add();
-        bombs.add(buttons[ranRow][ranCol]);
-    }
-    System.out.println(ranRow+", "+ranCol); //for testing
+        int ranRow = (int)(Math.random()*20);
+        int ranCol = (int)(Math.random()*20);
+        if (!bombs.contains(buttons[ranRow][ranCol]))
+        {
+            bombs.add(buttons[ranRow][ranCol]);
+            System.out.println(ranRow+", "+ranCol); //for testing
+        }   
+    } 
 }
 
 public void draw ()
@@ -117,13 +114,49 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
+        if (r >= 0 && r <= 20 && c >= 0 && c <= 20)
+            return true;
         return false;
     }
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        //your code here
+        if (buttons[row-1][col-1].isValid(row-1,col-1) && bombs.contains(buttons[row-1][col-1]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else if (buttons[row-1][col].isValid(row-1,col) && bombs.contains(buttons[row-1][col]))
+        {
+            numBombs = numBombs + 1;
+        }
+        else 
+        {
+            System.out.println("NULL");
+        }
         return numBombs;
     }
 }
